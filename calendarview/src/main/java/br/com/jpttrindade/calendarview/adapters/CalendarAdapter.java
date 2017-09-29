@@ -112,7 +112,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<MonthHolder> {
 
     }
     private void setLabel(MonthHolder holder, Month m) {
-        String year = (m.year != startYear ? " de "+m.year : "");
+        String year = (m.year != startYear ? " "+m.year : "");
         holder.label_month.setText(mMonthLabels.get(m.value-1) + year);
 
         if(m.value == startMonth && m.year == startYear) {
