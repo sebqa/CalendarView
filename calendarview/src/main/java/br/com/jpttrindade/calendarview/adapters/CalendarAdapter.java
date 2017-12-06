@@ -53,10 +53,15 @@ public class CalendarAdapter extends RecyclerView.Adapter<MonthHolder> {
     private HashMap<String, Boolean> mEvents;
     private CalendarView.Attributes attrs;
 
-    public CalendarAdapter(Context context, CalendarView.Attributes calendarAttrs) {
+    public CalendarAdapter(Context context, CalendarView.Attributes calendarAttrs, int lang) {
         mContext = context;
         attrs = calendarAttrs;
-        mMonthLabels = Arrays.asList(context.getResources().getStringArray(R.array.months));
+        if(lang == 1) {
+            mMonthLabels = Arrays.asList(context.getResources().getStringArray(R.array.monthsda));
+        } else{
+            mMonthLabels = Arrays.asList(context.getResources().getStringArray(R.array.months));
+
+        }
         Calendar c = Calendar.getInstance();
         startYear = c.get(Calendar.YEAR);
         startMonth = c.get(Calendar.MONTH)+1;

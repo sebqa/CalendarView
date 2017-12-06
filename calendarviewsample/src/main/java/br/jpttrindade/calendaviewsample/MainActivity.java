@@ -2,9 +2,12 @@ package br.jpttrindade.calendaviewsample;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import br.com.jpttrindade.calendarview.view.CalendarView;
 
@@ -26,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //editText = (EditText) findViewById(R.id.editText);
         calendarView = (CalendarView) findViewById(R.id.calendarView);
+        calendarView.setLanguage("da");
         calendarView.addEvent(16,9,2016);
         calendarView.addEvent(17,9,2016);
         calendarView.addEvent(18,9,2016);

@@ -2,6 +2,7 @@ package br.com.jpttrindade.calendarview.view;
 
 import android.app.Service;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -21,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import java.util.Locale;
+
 import br.com.jpttrindade.calendarview.R;
 import br.com.jpttrindade.calendarview.adapters.CalendarAdapter;
 
@@ -29,7 +32,7 @@ public class CalendarView extends FrameLayout {
     private Context mContext;
     private int mYear;
     private String[] mMonths;
-
+    int lang;
     private RecyclerView rl_calendar;
     private RecyclerView.LayoutManager mLayoutManager;
     private CalendarAdapter mCalendarAdapter;
@@ -122,6 +125,14 @@ public class CalendarView extends FrameLayout {
         invalidate();
 
     }
+    public void setLanguage(String lang){
+        if(lang.equals("da")) {
+            this.lang = 1;
+        } else{
+            this.lang = 0;
+        }
+        setAdapter();
+    }
 
     private void getAttrs(AttributeSet attrs, int defStyle) {
         final TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.CalendarView, defStyle, 0);
@@ -183,7 +194,8 @@ public class CalendarView extends FrameLayout {
     }
 
     private void setAdapter() {
-        mCalendarAdapter = new CalendarAdapter(mContext, calendarAttrs);
+
+        mCalendarAdapter = new CalendarAdapter(mContext, calendarAttrs, lang);
 
         //mCalendarAdapter.setMonthLabelHeight(monthLabelHeight);
 
